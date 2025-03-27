@@ -3,6 +3,10 @@
 ## Overview
 
 LockncodeCipher is a web-based application built using Flask that allows users to encode and decode text using various phonetic alphabets and cryptographic techniques. The application integrates several encryption methods such as Caesar cipher, Vigenère cipher, Base64 encoding, and AES encryption. The goal of the system is to facilitate secure communication and provide educational tools for learning about different encoding techniques and cryptography.
+![image (3)](https://github.com/user-attachments/assets/596a3c83-560a-474f-af89-bc6f57bac6a3)
+![image (1)](https://github.com/user-attachments/assets/1ca6a2dd-4375-4c32-90cc-f190d63d11f1)
+![image (2)](https://github.com/user-attachments/assets/733aaad2-80fc-46bc-95ac-8714f21cbc88)
+![image](https://github.com/user-attachments/assets/26f026cf-4655-4f25-ba85-831585a3b3ee)
 
 ## Key Components
 
