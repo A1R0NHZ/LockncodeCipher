@@ -99,6 +99,17 @@ LockncodeCipher is a web-based application built using Flask that allows users t
 - **Learning Tool**: Assists users in learning different phonetic alphabets and cryptographic techniques.
 - **Data Security**: Encrypts and securely transmits sensitive data.
 
+
+## Usage
+
+Open the Web Application: Navigate to the URL http://127.0.0.1:5000 in your web browser.
+
+Select Encoding/Decoding Method: Choose from phonetic alphabet options or cryptographic techniques (Caesar cipher, Vigenère cipher, Base64 encoding/decoding, AES encryption).
+
+Enter Text: Type the text you wish to encode or decode.
+
+View Results: The encoded/decoded text will appear immediately after you select your desired encoding method or cipher.
+
 ## Installation
 
 To run this project locally, follow these steps:
@@ -109,14 +120,4 @@ To run this project locally, follow these steps:
 git clone https://github.com/A1R0NHZ/LockncodeCipher.git
 cd LockncodeCipher
 python app.py
-
-### 2. Usage
-```bash
-Open the Web Application: Navigate to the URL http://127.0.0.1:5000 in your web browser.
-
-Select Encoding/Decoding Method: Choose from phonetic alphabet options or cryptographic techniques (Caesar cipher, Vigenère cipher, Base64 encoding/decoding, AES encryption).
-
-Enter Text: Type the text you wish to encode or decode.
-
-View Results: The encoded/decoded text will appear immediately after you select your desired encoding method or cipher.
 
