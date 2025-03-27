@@ -110,7 +110,8 @@ git clone https://github.com/A1R0NHZ/LockncodeCipher.git
 cd LockncodeCipher
 python app.py
 
-** ### 2. Usage**
+### 2. Usage
+```bash
 Open the Web Application: Navigate to the URL http://127.0.0.1:5000 in your web browser.
 
 Select Encoding/Decoding Method: Choose from phonetic alphabet options or cryptographic techniques (Caesar cipher, Vigenère cipher, Base64 encoding/decoding, AES encryption).
