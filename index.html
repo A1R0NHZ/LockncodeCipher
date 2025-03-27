@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LocknCode Cipher Tool</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Arial', sans-serif;
+        }
+        .container {
+            max-width: 800px;
+            margin-top: 50px;
+        }
+        .result-box {
+            background-color: #e9ecef;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .form-group.hidden {
+            display: none;
+        }
+        .alert {
+            margin-top: 20px;
+        }
+        h1 {
+            color: #0d6efd;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center mb-4">LocknCode Cipher Tool</h1>
+        <form method="POST">
+            <!-- Input Text -->
+            <div class="form-group">
+                <label for="text" class="form-label">Input Text</label>
+                <textarea class="form-control" id="text" name="text" rows="3" required></textarea>
+            </div>
+
+            <!-- Cipher Selection -->
+            <div class="form-group">
+                <label for="cipher" class="form-label">Cipher</label>
+                <select class="form-select" id="cipher" name="cipher">
+                    <option value="phonetic">Phonetic Alphabet</option>
+                    <option value="caesar">Caesar Cipher</option>
+                    <option value="vigenere">Vigenère Cipher</option>
+                    <option value="base64">Base64</option>
+                    <option value="aes">AES Encryption</option>
+                    <option value="morse">Morse Code</option>
+                </select>
+            </div>
+
+            <!-- Mode Selection -->
+            <div class="form-group">
+                <label for="mode" class="form-label">Mode</label>
+                <select class="form-select" id="mode" name="mode">
+                    <option value="encrypt">Encrypt</option>
+                    <option value="decrypt">Decrypt</option>
+                </select>
+            </div>
+
+            <!-- Key Input (for Vigenère and AES) -->
+            <div class="form-group hidden" id="key-group">
+                <label for="key" class="form-label">Key (if applicable)</label>
+                <input type="text" class="form-control" id="key" name="key">
+            </div>
+
+            <!-- Shift Input (for Caesar Cipher) -->
+            <div class="form-group hidden" id="shift-group">
+                <label for="shift" class="form-label">Shift (for Caesar Cipher)</label>
+                <input type="number" class="form-control" id="shift" name="shift" value="3">
+            </div>
+
+            <!-- Alphabet Selection (for Phonetic) -->
+            <div class="form-group hidden" id="alphabet-group">
+                <label for="alphabet" class="form-label">Alphabet (for Phonetic)</label>
+                <select class="form-select" id="alphabet" name="alphabet">
+                    <option value="NATO">NATO</option>
+                    <option value="German">German</option>
+                    <option value="Swedish Armed Forces">Swedish Armed Forces</option>
+                    <option value="Japanese Armed Forces">Japanese Armed Forces</option>
+                    <option value="US Military (Old) Alphabet">US Military (Old) Alphabet</option>
+                    <option value="Western Union International Alphabet">Western Union International Alphabet</option>
+                    <option value="Russian">Russian</option>
+                    <option value="Ukrainian">Ukrainian</option>
+                    <option value="Hebrew">Hebrew</option>
+                    <option value="British Forces Phonetic Alphabet">British Forces Phonetic Alphabet</option>
+                    <option value="Australian Defence Force Phonetic Alphabet">Australian Defence Force Phonetic Alphabet</option>
+                    <option value="Chinese Phonetic Alphabet (Pinyin)">Chinese Phonetic Alphabet (Pinyin)</option>
+                    <option value="French Phonetic Alphabet">French Phonetic Alphabet</option>
+                    <option value="Italian Phonetic Alphabet">Italian Phonetic Alphabet</option>
+                    <option value="Spanish Phonetic Alphabet">Spanish Phonetic Alphabet</option>
+                    <option value="Brazilian Portuguese Phonetic Alphabet">Brazilian Portuguese Phonetic Alphabet</option>
+                </select>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-primary">Process</button>
+        </form>
+
+        <!-- Result Section -->
+        {% if result %}
+        <div class="result-box mt-4">
+            <h4>Result</h4>
+            <p>{{ result }}</p>
+            <p><strong>Input Length:</strong> {{ input_length }} characters</p>
+            <p><strong>Output Length:</strong> {{ output_length }} characters</p>
+        </div>
+        {% endif %}
+
+        <!-- Error Section -->
+        {% if error %}
+        <div class="alert alert-danger mt-4" role="alert">
+            {{ error }}
+        </div>
+        {% endif %}
+    </div>
+
+    <script>
+        // JavaScript to show/hide fields based on selected cipher
+        document.getElementById('cipher').addEventListener('change', function () {
+            const cipher = this.value;
+            const keyGroup = document.getElementById('key-group');
+            const shiftGroup = document.getElementById('shift-group');
+            const alphabetGroup = document.getElementById('alphabet-group');
+
+            // Hide all groups initially
+            keyGroup.classList.add('hidden');
+            shiftGroup.classList.add('hidden');
+            alphabetGroup.classList.add('hidden');
+
+            // Show relevant groups based on selected cipher
+            if (cipher === 'vigenere' || cipher === 'aes') {
+                keyGroup.classList.remove('hidden');
+            } else if (cipher === 'caesar') {
+                shiftGroup.classList.remove('hidden');
+            } else if (cipher === 'phonetic') {
+                alphabetGroup.classList.remove('hidden');
+            }
+        });
+
+        // Trigger the change event on page load to set initial visibility
+        document.getElementById('cipher').dispatchEvent(new Event('change'));
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
